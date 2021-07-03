@@ -12,16 +12,6 @@ import {
   Link,
   useParams
 } from "react-router-dom";
-import firebase from 'firebase/app';
-
-firebase.initializeApp({
-  apiKey: "AIzaSyB1EkBznswgGfQQgeZAjo31-tXVhiTUZEg",
-  authDomain: "taskr-a222d.firebaseapp.com",
-  projectId: "taskr-a222d",
-  storageBucket: "taskr-a222d.appspot.com",
-  messagingSenderId: "965424484266",
-  appId: "1:965424484266:web:211500737137441f1a65d3"
-})
 
 const theme = createMuiTheme({
   palette: {
@@ -43,7 +33,7 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Dashboard />
+              <Dashboard/>
             </Route>
             <Route path="/start">
               <Start />
