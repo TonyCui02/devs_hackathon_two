@@ -66,9 +66,7 @@ export default function Dashboard(props) {
     const [name, setName] = React.useState("");
     let history = useHistory();
 
-
-    
-    const taskRef = index === 0 ? firestore.collection('tasks') : firestore.collection('tasks2');
+    const taskRef = !props.new ? firestore.collection('tasks') : firestore.collection('tasks2');
     const query = taskRef.limit(25);
     let sum = 0;
 
@@ -94,7 +92,7 @@ export default function Dashboard(props) {
     };
 
     function Reassign() {
-        history.push("/loading");
+        history.push("/loadingAdmin");
     }
 
     return (

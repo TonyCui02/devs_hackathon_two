@@ -42,7 +42,7 @@ export default function Loading(props) {
 
     React.useEffect(() => {
         setTimeout(function () {
-            !props.admin ? history.push("/") : history.push("/admin");
+            props.admin ? history.push("/admin1") : history.push("/1");
         }, 2500);
     }, [])
 

@@ -56,16 +56,25 @@ function App() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Dashboard admin={false} />
+              <Dashboard admin={false} new={false}/>
+            </Route>
+            <Route exact path="/1">
+              <Dashboard admin={false} new={true}/>
             </Route>
             <Route path="/admin">
-              <Dashboard admin={true} />
+              <Dashboard admin={true} new={false}/>
+            </Route>
+            <Route path="/admin1">
+              <Dashboard admin={true} new={true}/>
             </Route>
             <Route path="/start">
               <Start admin={false} />
             </Route>
             <Route path="/loading">
-              <Loading />
+              <Loading admin={false}/>
+            </Route>
+            <Route path="/loadingAdmin">
+              <Loading admin={true} />
             </Route>
             <Route path="/adminStart">
               <Start admin={true} />
