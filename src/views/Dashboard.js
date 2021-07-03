@@ -3,6 +3,11 @@ import React from 'react'
 import { CssBaseline } from '@material-ui/core';
 import PokerCard from '../components/PokerCard';
 import RatingCard from '../components/RatingCard';
+import Tasks from '../components/Tasks';
+import 'firebase/auth';
+import 'firebase/firestore';
+
+const auth = firebase.auth();
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: "center",
         height: 160,
     },
+    content: {
+        marginBottom: 160,
+    }
 }));
 
 export default function Dashboard() {
@@ -28,6 +36,9 @@ export default function Dashboard() {
 
     return (
         <div className={classes.root}>
+            <Grid container className={classes.content}>
+                <Tasks tasks={tasks} />
+            </Grid>
             <AppBar position="fixed" className={classes.appBar}>
                 <RatingCard onClick={(event) => handleListItemClick(event, 0)} selected={selectedIndex === 0} value={0} />
                 <RatingCard onClick={(event) => handleListItemClick(event, 1)} selected={selectedIndex === 1} value={1} />
@@ -40,3 +51,91 @@ export default function Dashboard() {
         </div>
     )
 }
+
+const tasks = [
+    {
+        id: 3928,
+        title: "Implement Registration API",
+        developer: "John Doe",
+        score: 4,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 1514,
+        title: "Resolve Reload Bug",
+        developer: "Jane Doe",
+        score: 1,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 7812,
+        title: "Usability Feedback Report",
+        developer: "Destiny Li",
+        score: 5,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 3928,
+        title: "Implement Registration API",
+        developer: "John Doe",
+        score: 4,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 1514,
+        title: "Resolve Reload Bug",
+        developer: "Jane Doe",
+        score: 1,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 7812,
+        title: "Usability Feedback Report",
+        developer: "Destiny Li",
+        score: 5,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 3928,
+        title: "Implement Registration API",
+        developer: "John Doe",
+        score: 4,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 1514,
+        title: "Resolve Reload Bug",
+        developer: "Jane Doe",
+        score: 1,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 7812,
+        title: "Usability Feedback Report",
+        developer: "Destiny Li",
+        score: 5,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 3928,
+        title: "Implement Registration API",
+        developer: "John Doe",
+        score: 4,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 1514,
+        title: "Resolve Reload Bug",
+        developer: "Jane Doe",
+        score: 1,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    },
+    {
+        id: 7812,
+        title: "Usability Feedback Report",
+        developer: "Destiny Li",
+        score: 5,
+        link: "https://wdcc-aspa.atlassian.net/browse/ASPA-34",
+    }
+
+]

@@ -1,3 +1,4 @@
+import React from 'react'
 import Dashboard from "./views/Dashboard";
 import Start from "./views/Start";
 import '@fontsource/roboto';
@@ -11,7 +12,16 @@ import {
   Link,
   useParams
 } from "react-router-dom";
+import firebase from 'firebase/app';
 
+firebase.initializeApp({
+  apiKey: "AIzaSyB1EkBznswgGfQQgeZAjo31-tXVhiTUZEg",
+  authDomain: "taskr-a222d.firebaseapp.com",
+  projectId: "taskr-a222d",
+  storageBucket: "taskr-a222d.appspot.com",
+  messagingSenderId: "965424484266",
+  appId: "1:965424484266:web:211500737137441f1a65d3"
+})
 
 const theme = createMuiTheme({
   palette: {
@@ -23,6 +33,8 @@ const theme = createMuiTheme({
     }
   },
 });
+
+
 
 function App() {
   return (
@@ -44,3 +56,5 @@ function App() {
 }
 
 export default App;
+
+
