@@ -3,6 +3,7 @@ import React from 'react'
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import clsx from 'clsx';
 import { useHistory } from 'react-router';
+import { ThemeProvider } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -22,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     },
     icon: {
         color: "#eb670f",
-        fontSize: 240
+        fontSize: 240,
+        buttonRipple: "red"
     },
     clickedIcon: {
         transition: theme.transitions.create(['color'], {
@@ -30,17 +32,11 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
         color: "#66bf39	",
-        tr: {
-            background: "#f1f1f1",
-            '&:hover': {
-                background: "#f00",
-            }
-        }
     }
 
 }));
 
-export default function Start() {
+export default function Start(props) {
     const classes = useStyles();
     const [clicked, setClick] = React.useState(false);
     let history = useHistory();
@@ -48,8 +44,8 @@ export default function Start() {
     function handleClick() {
         setClick(true);
         setTimeout(function () {
-            history.push("/");
-        }, 2000);
+            !props.admin? history.push("/") : history.push("/admin");
+        }, 2000) ;
 
     }
 
@@ -57,7 +53,8 @@ export default function Start() {
     return (
         <div className={classes.root}>
             <Grid className={classes.content} container direction="column" alignItems="center">
-                <Grid direction="column" container xs={8} justify="center" alignItems="center">
+                <Grid item direction="column" container xs={8} justify="center" alignItems="center">
+                    <Typography variant="h5">Admin Portal</Typography>
                     <IconButton aria-label="add to shopping cart" onClick={() => { handleClick() }}>
                         <SupervisedUserCircleIcon className={clsx(classes.icon, clicked && classes.clickedIcon)} />
                     </IconButton>
@@ -76,7 +73,7 @@ export default function Start() {
                             Tasks Remaining:
                         </Typography>
                         <Typography variant="h2">
-                            12
+                            6
                         </Typography>
                     </Grid>
                 </Grid>

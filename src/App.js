@@ -16,10 +16,28 @@ import {
 
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
     primary: {
-      main: "#262c52"
+      main: "#212644"
     },
+    secondary: {
+      main: "#66bf39"
+    }
   },
+  typography: {
+    h4: {
+      fontWeight: "700",
+    },
+    h5: {
+      fontWeight: "700",
+    },
+    h2: {
+      fontWeight: "700",
+    },
+    h3: {
+      fontWeight: "700",
+    },
+  }
 });
 
 
@@ -30,14 +48,20 @@ function App() {
       <div className="App">
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Dashboard/>
+            <Route path="/admin">
+              <Dashboard admin={true} />
             </Route>
             <Route path="/start">
-              <Start />
+              <Start admin={false} />
+            </Route>
+            <Route path="/adminStart">
+              <Start admin={true} />
             </Route>
             <Route path="/profile">
-              <Profile/>
+              <Profile />
+            </Route>
+            <Route exact path="/">
+              <Dashboard admin={false} />
             </Route>
           </Switch>
         </Router>

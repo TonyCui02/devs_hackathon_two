@@ -4,9 +4,14 @@ import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        margin: 15,
-        width: 90,
-        // background: theme.palette.common.white,
+        margin: 10,
+        width: 45,
+        height: "auto",
+        borderRadius: 26,
+        // background: theme.alette.common.white,
+        [theme.breakpoints.up('sm')]: {
+            width: 90,
+        },
     },
     selected: {
         color: "white",
