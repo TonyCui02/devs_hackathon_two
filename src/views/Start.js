@@ -30,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
         color: "#66bf39	",
+        tr: {
+            background: "#f1f1f1",
+            '&:hover': {
+                background: "#f00",
+            }
+        }
     }
 
 }));

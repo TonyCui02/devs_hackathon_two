@@ -1,6 +1,7 @@
 import React from 'react'
 import Dashboard from "./views/Dashboard";
 import Start from "./views/Start";
+import Profile from "./views/Profile";
 import '@fontsource/roboto';
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core";
@@ -18,9 +19,6 @@ const theme = createMuiTheme({
     primary: {
       main: "#262c52"
     },
-    secondary: {
-      main: "#66bf39"
-    }
   },
 });
 
@@ -37,6 +35,9 @@ function App() {
             </Route>
             <Route path="/start">
               <Start />
+            </Route>
+            <Route path="/profile">
+              <Profile/>
             </Route>
           </Switch>
         </Router>
