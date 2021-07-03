@@ -1,7 +1,7 @@
 import { makeStyles, Card, Typography, Link, CardContent, Button, CardActions, CardMedia } from "@material-ui/core";
 import clsx from 'clsx';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
         minWidth: 275,
         background: "#383e6e",
@@ -10,8 +10,9 @@ const useStyles = makeStyles({
         display: "flex",
     },
     selected: {
-        color: "lightGreen",
+        // color: "lightGreen",
         filter: "drop-shadow(4px 4px 8px black)",
+        background: theme.palette.secondary.main,
     },
     img: {
         height: 68,
@@ -38,8 +39,11 @@ const useStyles = makeStyles({
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+    },
+    ratingSelected: {
+        backgroundColor: theme.palette.secondary.dark
     }
-});
+}));
 
 export default function Task(props) {
     const classes = useStyles();
@@ -82,7 +86,7 @@ export default function Task(props) {
                 </Typography>
             </CardContent>
             <CardMedia className={classes.ratingWrapper}>
-                <div className={clsx(classes.rating, props.myTask && classes.myTask)}>
+                <div className={clsx(classes.rating, props.myTask && classes.ratingSelected)}>
                     <Typography variant="h4">{rating}</Typography>
                 </div>
             </CardMedia>
