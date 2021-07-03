@@ -2,6 +2,7 @@ import React from 'react'
 import Dashboard from "./views/Dashboard";
 import Start from "./views/Start";
 import Profile from "./views/Profile";
+import Loading from './views/Loading';
 import '@fontsource/roboto';
 import { ThemeProvider } from "@material-ui/styles";
 import { createMuiTheme } from "@material-ui/core";
@@ -62,6 +63,9 @@ function App() {
             </Route>
             <Route path="/start">
               <Start admin={false} />
+            </Route>
+            <Route path="/loading">
+              <Loading />
             </Route>
             <Route path="/adminStart">
               <Start admin={true} />

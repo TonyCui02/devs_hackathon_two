@@ -5,7 +5,8 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import Task from "../components/Task"
-import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useCollectionData, useDocument } from 'react-firebase-hooks/firestore';
+import {useHistory} from 'react-router-dom';
 
 
 firebase.initializeApp({
@@ -59,18 +60,20 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Dashboard(props) {
     const classes = useStyles();
-    // const taskRef = firestore.collection('developers');
+    const indexRef = firestore.collection('iteration')
+    const [index] = useCollectionData(indexRef.limit(25))
     const [selectedIndex, setSelectedIndex] = React.useState("");
     const [name, setName] = React.useState("");
+    let history = useHistory();
 
-    const taskRef = firestore.collection('tasks');
+
+    
+    const taskRef = index === 0 ? firestore.collection('tasks') : firestore.collection('tasks2');
     const query = taskRef.limit(25);
     let sum = 0;
 
 
     const [tasks] = useCollectionData(query, { idField: 'id' });
-
-    console.log(sum)
 
     const handleChange = (event) => {
         setName(event.target.value);
@@ -79,7 +82,7 @@ export default function Dashboard(props) {
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
-        name && firestore.collection("tasks").doc(name).update({
+        name && taskRef.doc(name).update({
             // uid: Math.floor(Math.random() * (9999 - 1111 + 1) + 1111),
             rating: index
         })
@@ -90,11 +93,15 @@ export default function Dashboard(props) {
         // })
     };
 
+    function Reassign() {
+        history.push("/loading");
+    }
+
     return (
         <Grid container component="main" className={classes.root}>
             <AppBar>
                 {/* <Typography variant="h6">{name}</Typography> */}
-                <Toolbar style={{justifyContent: "center"}}>
+                <Toolbar style={{ justifyContent: "center" }}>
                     <TextField
                         id="filled-name"
                         label="Name"
@@ -129,12 +136,12 @@ export default function Dashboard(props) {
                 <RatingCard onClick={(event) => handleListItemClick(event, 5)} selected={selectedIndex === 5} value={5} />
             </AppBar> : <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <Toolbar className={classes.managerBar}>
-                    <Button variant="outlined" size="large">Reassign</Button>
+                    <Button variant="outlined" size="large" onClick={() => Reassign()}>Reassign</Button>
                     <div>
                         <Typography variant="h6">Average task satisfaction: </Typography>
                         {tasks && <AverageRating data={tasks} />}
                     </div>
-                    <Button variant="outlined" size="large">Continue</Button>
+                    <Button href="https://devs-2021-the-rookies.atlassian.net/jira/software/projects/TRS2021/boards/1" variant="outlined" size="large">Continue</Button>
                 </Toolbar>
             </AppBar>}
         </Grid>
@@ -146,7 +153,7 @@ function AverageRating(props) {
     let sum = 0;
 
     data.forEach((obj) => {
-        console.log(obj.rating)
+        // console.log(obj.rating)
         sum = sum + obj.rating
     }
     );
