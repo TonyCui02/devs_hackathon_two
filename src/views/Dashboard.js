@@ -107,7 +107,7 @@ function TaskData(props) {
 
     return (
         <Grid container style={{ marginTop: 100 }}>
-            {tasks && tasks.map(msg => <Task key={msg.id} message={msg}></Task>)}
+            {tasks && tasks.map(msg => <Task myTask={msg.name === props.name} key={msg.id} message={msg}></Task>)}
         </Grid>
     )
 }

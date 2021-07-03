@@ -1,4 +1,5 @@
 import { makeStyles, Card, Typography, Link, Grid } from "@material-ui/core";
+import clsx from 'clsx';
 
 const useStyles = makeStyles({
     root: {
@@ -10,6 +11,9 @@ const useStyles = makeStyles({
         textAlign: "center",
         alignItems: "center",
     },
+    myTask: {
+        color: "purple"
+    }
 });
 
 export default function Task(props) {
@@ -27,11 +31,11 @@ export default function Task(props) {
                 {rating && rating}
             </Typography>
             <Grid>
-                {tags && tags.map(data => {
+                {tags.map(data => {
                     <Typography>{data}</Typography>
                 })}
             </Grid>
-            <Typography variant="subtitle2">
+            <Typography variant={!props.myTask ? "subtitle2" : "h4"} className={clsx(classes.name, props.myTask && classes.myTask)}>
                 Allocated to: {name}
             </Typography>
         </Card>
