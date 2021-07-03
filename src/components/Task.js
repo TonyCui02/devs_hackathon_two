@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: "36px",
         color: "white",
         display: "flex",
+        justifyContent: "space-between",
     },
     selected: {
         // color: "lightGreen",

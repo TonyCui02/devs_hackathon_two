@@ -39,6 +39,8 @@ const useStyles = makeStyles((theme) => ({
     appBarTop: {
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
+        height: 64,
     },
     nameInput: {
         margin: 2,
@@ -91,8 +93,8 @@ export default function Dashboard(props) {
     return (
         <Grid container component="main" className={classes.root}>
             <AppBar>
-                <div className={classes.appBarTop}>
-                    {/* <Typography variant="h6">{name}</Typography> */}
+                {/* <Typography variant="h6">{name}</Typography> */}
+                <Toolbar style={{justifyContent: "center"}}>
                     <TextField
                         id="filled-name"
                         label="Name"
@@ -101,8 +103,9 @@ export default function Dashboard(props) {
                         variant="outlined"
                         className={classes.nameInput}
                         size="small"
+                        color="secondary"
                     />
-                </div>
+                </Toolbar>
             </AppBar>
             <Grid item xs={12} className={classes.tasks}>
                 <Typography variant="h3" gutterBottom>Results</Typography>

@@ -40,6 +40,12 @@ const theme = createMuiTheme({
   }
 });
 
+const lightTheme = createMuiTheme({
+  palette: {
+    type: 'light',
+  },
+});
+
 
 
 function App() {
@@ -48,8 +54,11 @@ function App() {
       <div className="App">
         <Router>
           <Switch>
+            <Route exact path="/">
+              <Dashboard admin={false} />
+            </Route>
             <Route path="/admin">
-              <Dashboard admin={true}/>
+              <Dashboard admin={true} />
             </Route>
             <Route path="/start">
               <Start admin={false} />
@@ -57,12 +66,11 @@ function App() {
             <Route path="/adminStart">
               <Start admin={true} />
             </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
-            <Route exact path="/">
-              <Dashboard admin={false} />
-            </Route>
+            <ThemeProvider theme={lightTheme}>
+              <Route path="/profile">
+                <Profile />
+              </Route>
+            </ThemeProvider>
           </Switch>
         </Router>
       </div>
