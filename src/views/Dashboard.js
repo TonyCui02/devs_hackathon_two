@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 2,
     },
     tasks: {
-        marginTop: 56,
+        marginTop: 80,
         margin: 56,
     },
     managerBar: {
@@ -60,9 +60,11 @@ export default function Dashboard(props) {
     // const taskRef = firestore.collection('developers');
     const [selectedIndex, setSelectedIndex] = React.useState("");
     const [name, setName] = React.useState("");
+
     const taskRef = firestore.collection('tasks');
     const query = taskRef.limit(25);
     let sum = 0;
+
 
     const [tasks] = useCollectionData(query, { idField: 'id' });
 

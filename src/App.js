@@ -49,7 +49,7 @@ function App() {
         <Router>
           <Switch>
             <Route path="/admin">
-              <Dashboard admin={true} />
+              <Dashboard admin={true}/>
             </Route>
             <Route path="/start">
               <Start admin={false} />
