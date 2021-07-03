@@ -58,7 +58,7 @@ export default function Dashboard(props) {
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
         firestore.collection("tasks").doc(name).update({
-            uid: Math.floor(Math.random() * (9999 - 1111 + 1) + 1111),
+            // uid: Math.floor(Math.random() * (9999 - 1111 + 1) + 1111),
             rating: index
         })
         // firestore.collection("tasks").doc("Bob").set({
