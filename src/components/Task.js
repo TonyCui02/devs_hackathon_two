@@ -1,4 +1,4 @@
-import { makeStyles, Card, Typography, Link, CardContent, Button, CardActions, CardMedia } from "@material-ui/core";
+import { makeStyles, Card, Typography, Link, CardContent, Button, CardActions, CardMedia, Chip } from "@material-ui/core";
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -50,6 +50,8 @@ export default function Task(props) {
     const classes = useStyles();
     const { tags, uid, title, rating, id, name, link } = props.message;
 
+    // console.log(tags);
+
     return (
         // <Card className={classes.root} variant="outlined">
         //     <Typography variant="subtitle1" gutterBottom>
@@ -80,11 +82,9 @@ export default function Task(props) {
                 <Typography variant="body2" component="p">
                     Task: {title}
                 </Typography>
-                <Typography variant="h6">
-                    {/* Tags: {tags.map(data => {
-                        <Typography>{data}</Typography>
-                    })} */}
-                </Typography>
+                {/* {tags.map((tag) => {
+                    <Chip key={tag} label="test"/>
+                })} */}
             </CardContent>
             <CardMedia className={classes.ratingWrapper}>
                 <div className={clsx(classes.rating, props.myTask && classes.ratingSelected)}>

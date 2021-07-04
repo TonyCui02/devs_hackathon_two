@@ -124,6 +124,7 @@ export default function Dashboard(props) {
                             </Task>
                         </Grid>)}
                 </Grid>
+                <Button variant="outlined" size="large" onClick={() => history.push("/loading")}>Continue</Button>
             </Grid>
             {!props.admin ? <AppBar position="fixed" color="primary" className={classes.appBar}>
                 <RatingCard onClick={(event) => handleListItemClick(event, 0)} selected={selectedIndex === 0} value={0} />

@@ -54,7 +54,7 @@ export default function Start(props) {
         <div className={classes.root}>
             <Grid className={classes.content} container direction="column" alignItems="center">
                 <Grid item direction="column" container xs={8} justify="center" alignItems="center">
-                    <Typography variant="h5">Admin Portal</Typography>
+                    {props.admin && <Typography variant="h5">Admin Portal</Typography>}
                     <IconButton aria-label="add to shopping cart" onClick={() => { handleClick() }}>
                         <SupervisedUserCircleIcon className={clsx(classes.icon, clicked && classes.clickedIcon)} />
                     </IconButton>
