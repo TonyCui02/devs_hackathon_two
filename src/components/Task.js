@@ -1,4 +1,4 @@
-import { makeStyles, Card, Typography, Link, CardContent, Button, CardActions, CardMedia, Chip } from "@material-ui/core";
+import { makeStyles, Card, Grid, Typography, Link, CardContent, Button, CardActions, CardMedia, Chip } from "@material-ui/core";
 import clsx from 'clsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -82,6 +82,14 @@ export default function Task(props) {
                 <Typography variant="body2" component="p">
                     Task: {title}
                 </Typography>
+                <Grid container spacing={1}>
+                    <Grid item>
+                        <Chip size="small" color="primary" label={tags[0]} />
+                    </Grid>
+                    <Grid item>
+                        <Chip size="small" color="primary" label={tags[1]} />
+                    </Grid>
+                </Grid>
                 {/* {tags.map((tag) => {
                     <Chip key={tag} label="test"/>
                 })} */}
